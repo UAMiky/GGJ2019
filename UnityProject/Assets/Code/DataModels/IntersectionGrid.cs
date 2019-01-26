@@ -2,40 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class IntersectionGrid : ScriptableObject, ISerializationCallbackReceiver
+namespace miyaluas.droplet
 {
-    [System.Serializable]
-    struct IntersectionDefinition
+    [CreateAssetMenu]
+    public class IntersectionGrid : ScriptableObject, ISerializationCallbackReceiver
     {
-        public IntersectionModel model;
-        public Vector2[] positions;
-    }
+        [System.Serializable]
+        struct IntersectionDefinition
+        {
+            public IntersectionModel model;
+            public Vector2[] positions;
+        }
 
-    [SerializeField]
-    IntersectionModel defaultModel;
+        [SerializeField]
+        IntersectionModel defaultModel;
 
-    [SerializeField]
-    IntersectionDefinition[] intersections;
+        [SerializeField]
+        IntersectionDefinition[] intersections;
 
-    Dictionary<Vector2, IntersectionModel> intersectionMap = 
-        new Dictionary<Vector2, IntersectionModel>();
+        Dictionary<Vector2, IntersectionModel> intersectionMap =
+            new Dictionary<Vector2, IntersectionModel>();
 
-    public void OnAfterDeserialize()
-    {
-        foreach (IntersectionDefinition i in intersections)
-            foreach(Vector2 pos in i.positions)
-                intersectionMap[pos] = i.model;
-    }
+        public void OnAfterDeserialize()
+        {
+            foreach (IntersectionDefinition i in intersections)
+                foreach (Vector2 pos in i.positions)
+                    intersectionMap[pos] = i.model;
+        }
 
-    public void OnBeforeSerialize() {}
+        public void OnBeforeSerialize() { }
 
-    public float GetSpeedup(Vector3 local_pos)
-    {
-        Vector2 pos = local_pos;
-        IntersectionModel model;
-        if (intersectionMap.TryGetValue(pos, out model))
-            return model.GetRandomSpeedup();
-        return defaultModel.GetRandomSpeedup();
+        public float GetSpeedup(Vector3 local_pos)
+        {
+            Vector2 pos = local_pos;
+            IntersectionModel model;
+            if (intersectionMap.TryGetValue(pos, out model))
+                return model.GetRandomSpeedup();
+            return defaultModel.GetRandomSpeedup();
+        }
     }
 }

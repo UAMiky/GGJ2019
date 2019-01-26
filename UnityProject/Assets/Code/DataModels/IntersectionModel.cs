@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class IntersectionModel : ScriptableObject
+namespace miyaluas.droplet
 {
-    [SerializeField]
-    float [] speedup;
-
-    public float GetRandomSpeedup()
+    [CreateAssetMenu]
+    public class IntersectionModel : ScriptableObject
     {
-        int len = speedup.Length;
-        if (len < 1) return 0f;
-        int n = Random.Range(0, len);
-        return speedup[n];
+        [SerializeField]
+        float[] speedup;
+
+        public float GetRandomSpeedup()
+        {
+            int len = speedup.Length;
+            if (len < 1) return 0f;
+            int n = Random.Range(0, len);
+            return speedup[n];
+        }
     }
 }
