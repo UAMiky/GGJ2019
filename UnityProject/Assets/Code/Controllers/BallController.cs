@@ -15,6 +15,8 @@ namespace miyaluas.droplet
         SensorKind goal;
         [SerializeField]
         Animation homeAnimation;
+        [SerializeField]
+        Animator animator;
 
         [Header("Speed configuration")]
         [SerializeField]
@@ -38,6 +40,7 @@ namespace miyaluas.droplet
         Vector3 totalUnitsTravelled;
 
         Transform initialParent;
+        Rigidbody rb;
 
         internal void SetGameController(GameController gameController)
         {
@@ -52,6 +55,7 @@ namespace miyaluas.droplet
         private void Awake()
         {
             initialParent = transform.parent;
+            rb = GetComponent<Rigidbody>();
         }
 
         void Update()
@@ -65,6 +69,13 @@ namespace miyaluas.droplet
             Vector3 travel = direction * speed * delta;
             CheckIntersection(ref travel, delta);
             Move(travel);
+
+            // TODO: Rotate towards travel
+
+            bool speedingUp = (speed >= 1f); // || (targetSpeed > speed);
+            float yVelocity = Mathf.Clamp01(Mathf.Abs(rb.velocity.y));
+            animator.SetBool("SpeedUp", speedingUp);
+            animator.SetFloat("Speed", speedingUp ? yVelocity : 1f - yVelocity);
         }
 
         void Move (Vector3 travel)
@@ -72,7 +83,7 @@ namespace miyaluas.droplet
             travel *= speedMultiplier;
             travel.x *= grid.UnitDistance.x;
             travel.y *= grid.UnitDistance.y;
-            transform.Translate(travel);
+            rb.MovePosition(transform.position + travel);
         }
 
         void CheckIntersection(ref Vector3 travel, float delta)
