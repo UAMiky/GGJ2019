@@ -5,7 +5,14 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("Vertical distance between grid lines")]
     float unitDistance = 1f;
+    [SerializeField]
+    float maxSpeed = 6f;
+    [SerializeField]
+    float speedMultiplier = 1f;
+    [SerializeField]
+    IntersectionGrid grid;
 
     // Direction
     Vector3 direction = Vector3.down;
@@ -27,7 +34,7 @@ public class BallController : MonoBehaviour
         Vector3 travel = direction * speed * delta;
         CheckIntersection(ref travel, delta);
 
-        transform.position = transform.position + travel * unitDistance;
+        transform.position = transform.position + travel * speedMultiplier * unitDistance;
     }
 
     void CheckIntersection(ref Vector3 travel, float delta)
@@ -41,26 +48,31 @@ public class BallController : MonoBehaviour
             targetUnitsTravelled.y = -2f;
             arrivedIntersection = true;
         }
-        else if (Mathf.Abs(unitsTravelled.x) >= 1f)
+        else if (Mathf.Abs(targetUnitsTravelled.x) >= 1f)
         {
             // We crossed an intersection while going left or right
-            targetUnitsTravelled.x = Mathf.Clamp(unitsTravelled.x, -1f, 1f);
+            targetUnitsTravelled.x = Mathf.Clamp(targetUnitsTravelled.x, -1f, 1f);
             targetUnitsTravelled.y = -1f;
             arrivedIntersection = true;
         }
 
+        // Apply intersection  changes
         if(arrivedIntersection)
         {
             // Move to the intersection
             Vector3 move = targetUnitsTravelled - unitsTravelled;
-            transform.position = transform.position + move * unitDistance;
-            delta -= Vector3.Dot(move, travel) / Vector3.Dot(travel, travel);
+            transform.position = transform.position + move * speedMultiplier * unitDistance;
+            float t = Vector3.Dot(move, travel) / Vector3.Dot(travel, travel);
+            delta *= (1 - t);
             travel -= move;
 
             // Apply speed change on the intersection
             ArrivedIntersection(ref travel, delta);
             unitsTravelled = Vector3.zero;
         }
+
+        // Accumulate traveled distance from last intersection
+        unitsTravelled += travel;
     }
 
     void ArrivedIntersection(ref Vector3 travel, float delta)
@@ -72,17 +84,26 @@ public class BallController : MonoBehaviour
             (f >= 0.3f) ? new Vector3(1f, -1f) :
             Vector3.down;
 
-        // TODO: Change targetSpeed
+        // Change targetSpeed
+        targetSpeed += grid.GetSpeedup(transform.localPosition / unitDistance);
         if(targetSpeed < 0.1f)
         {
             speed = 0f;
             targetSpeed = 1f;
         }
+        else if(targetSpeed > maxSpeed)
+        {
+            targetSpeed = maxSpeed;
+        }
+
+        // Move the remaining distance
         travel = direction * speed * delta;
     }
 
     float GetInput()
     {
-        return Input.GetAxisRaw("Horizontal");
+        return Application.isMobilePlatform ?
+            Input.acceleration.z : 
+            Input.GetAxisRaw("Horizontal");
     }
 }

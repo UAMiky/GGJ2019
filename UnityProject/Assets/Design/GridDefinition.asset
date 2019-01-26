@@ -13,4 +13,11 @@ MonoBehaviour:
   m_Name: GridDefinition
   m_EditorClassIdentifier: 
   defaultModel: {fileID: 11400000, guid: 1bcf79eadd9ae23478e7a3f7a56fbeb7, type: 2}
-  intersections: []
+  intersections:
+  - model: {fileID: 11400000, guid: 19fcb80a5559af94eadc7725f7f953e3, type: 2}
+    positions:
+    - {x: 0, y: -2}
+    - {x: 0, y: -4}
+  - model: {fileID: 11400000, guid: 72ba98c3e1096f04c8effe1f9bf8ff35, type: 2}
+    positions:
+    - {x: 0, y: -6}

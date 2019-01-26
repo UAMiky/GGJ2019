@@ -10,6 +10,9 @@ public class IntersectionModel : ScriptableObject
 
     public float GetRandomSpeedup()
     {
-        return speedup[UnityEngine.Random.Range(0, speedup.Length)];
+        int len = speedup.Length;
+        if (len < 1) return 0f;
+        int n = Random.Range(0, len);
+        return speedup[n];
     }
 }

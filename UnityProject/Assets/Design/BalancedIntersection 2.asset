@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7cb1a009c4e86b45abc6366e2b1410a, type: 3}
   m_Name: BalancedIntersection 2
   m_EditorClassIdentifier: 
-  speedup: feffffffffffffff000000000100000002000000
+  speedup:
+  - -2
+  - -1
+  - 0
+  - 1
+  - 2
