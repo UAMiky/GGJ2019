@@ -7,7 +7,7 @@ namespace miyaluas.droplet
     public class CameraController : MonoBehaviour
     {
         [SerializeField]
-        float dampSpeed = .8f;
+        float dampSpeed = 10f;
 
         GameController game;
 

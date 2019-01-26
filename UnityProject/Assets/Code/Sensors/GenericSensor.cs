@@ -6,13 +6,18 @@ namespace miyaluas.droplet
 {
     public class GenericSensor : MonoBehaviour
     {
+        [Header("Sensor Configuration")]
         [SerializeField]
         SensorKind kind;
-
         [SerializeField]
         bool ignoreWhenDifferent;
 
+        [Header("Animations")]
+        Animation hitAnimation;
+
         GameController gameController;
+
+        public Animation HitAnimation => hitAnimation;
 
         // Automatically called when adding this component
         void Reset()
@@ -34,13 +39,13 @@ namespace miyaluas.droplet
             // Collision matrix implies we only collide with the player
             if(gameController.goal == kind)
             {
-                // TODO: tell game controller we found our goal
-                // gameController.GoalReached(this);
+                // Tell game controller we found our goal
+                gameController.GoalReached(this);
             }
             else if(!ignoreWhenDifferent)
             {
-                // TODO: tell game controller we hit something unexpected
-                // gameController.EnemyHit(this);
+                // Tell game controller we hit something unexpected
+                gameController.EnemyHit(this);
             }
         }
     }

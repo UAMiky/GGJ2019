@@ -6,17 +6,28 @@ namespace miyaluas.droplet
 {
     public class BallController : MonoBehaviour
     {
+        [Header("Grid configuration")]
+        [SerializeField]
+        IntersectionGrid grid;
         [SerializeField]
         [Tooltip("Distance between grid lines")]
         Vector2 unitDistance = Vector2.one;
+
+        [Header("Character configuration")]
+        [SerializeField]
+        SensorKind goal;
+        [SerializeField]
+        Animation homeAnimation;
+
+        [Header("Speed configuration")]
         [SerializeField]
         [Tooltip("Maximum speed in grid units")]
         float maxSpeed = 6f;
-
         [SerializeField]
         float speedMultiplier = 1f;
-        [SerializeField]
-        IntersectionGrid grid;
+
+        public Animation HomeAnimation => homeAnimation;
+        public SensorKind Goal => goal;
 
         // Direction
         Vector3 direction = Vector3.down;
@@ -27,18 +38,20 @@ namespace miyaluas.droplet
         // Accumulates units travelled from last intersection
         Vector3 unitsTravelled;
 
+        Transform initialParent;
+
         internal void SetGameController(GameController gameController)
         {
-        }
-
-        IEnumerator Start()
-        {
-            // Wait one frame to allow input to be read
-            // TODO: Remove when menu is done
-            yield return new WaitForSeconds(0.1f);
             Vector3 travel = Vector3.zero;
             ArrivedIntersection(ref travel, 0f);
             unitsTravelled = Vector3.zero;
+            transform.position = gameController.transform.position;
+            this.enabled = true;
+        }
+
+        private void Awake()
+        {
+            initialParent = transform.parent;
         }
 
         void Update()
@@ -125,11 +138,23 @@ namespace miyaluas.droplet
             travel = direction * speed * delta;
         }
 
+        internal void Hide()
+        {
+            transform.SetParent(initialParent);
+            this.enabled = false;
+        }
+
         float GetInput()
         {
             return Application.isMobilePlatform ?
                 Input.acceleration.x :
                 Input.GetAxisRaw("Horizontal");
+        }
+
+        internal void PlayHomeAnimation(GameController gameController)
+        {
+            transform.SetParent(gameController.transform);
+            transform.position = initialParent.position;
         }
     }
 }
