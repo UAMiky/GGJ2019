@@ -121,8 +121,8 @@ namespace miyaluas.droplet
             // Change direction
             float f = GetInput();
             direction =
-                (f <= -0.3f) && (totalUnitsTravelled.x > -grid.HorizontalLimit) ? new Vector3(-1f, -1f) :
-                (f >=  0.3f) && (totalUnitsTravelled.x < grid.HorizontalLimit) ? new Vector3(1f, -1f) :
+                (f <= -0.3f) && (totalUnitsTravelled.x > grid.HorizontalLeftLimit) ? new Vector3(-1f, -1f) :
+                (f >=  0.3f) && (totalUnitsTravelled.x < grid.HorizontalRightLimit) ? new Vector3(1f, -1f) :
                 Vector3.down;
 
             // Change targetSpeed

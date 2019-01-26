@@ -19,8 +19,9 @@ namespace miyaluas.droplet
         Vector2 unitDistance = Vector2.one;
 
         [SerializeField]
-        [Tooltip("Number of horizontal grid intersections in half screen")]
-        float horizontalLimit = 5;
+        float horizontalLeftLimit = -13;
+        [SerializeField]
+        float horizontalRightLimit = 14;
 
         [SerializeField]
         IntersectionModel defaultModel;
@@ -32,7 +33,8 @@ namespace miyaluas.droplet
             new Dictionary<Vector2, IntersectionModel>();
 
         public Vector2 UnitDistance => unitDistance;
-        public float HorizontalLimit => horizontalLimit;
+        public float HorizontalLeftLimit => horizontalLeftLimit;
+        public float HorizontalRightLimit => horizontalRightLimit;
 
         public void OnAfterDeserialize()
         {

@@ -232,7 +232,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 15
-  field of view: 60
+  field of view: 118
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -258,7 +258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -10}
+  m_LocalPosition: {x: 0, y: 1.5, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -323,7 +323,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 11400000, guid: 05e52d0ac9377c84989b3328b6909adb, type: 2}
-  unitDistance: {x: 2, y: 1}
   goal: 1
   homeAnimation: {fileID: 0}
   maxSpeed: 6
@@ -405,7 +404,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 11400000, guid: 05e52d0ac9377c84989b3328b6909adb, type: 2}
-  unitDistance: {x: 2, y: 1}
   goal: 5
   homeAnimation: {fileID: 0}
   maxSpeed: 6
@@ -501,7 +499,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 11400000, guid: 05e52d0ac9377c84989b3328b6909adb, type: 2}
-  unitDistance: {x: 2, y: 1}
   goal: 3
   homeAnimation: {fileID: 0}
   maxSpeed: 6
@@ -577,7 +574,7 @@ GameObject:
   - component: {fileID: 964088468}
   - component: {fileID: 964088467}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Background_Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,7 +597,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 603240c7fce456e45bf7093b641e8c74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -635,13 +632,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964088466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: -88, z: 0}
+  m_LocalScale: {x: 64, y: 216, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &1101922576
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,7 +671,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 11400000, guid: 05e52d0ac9377c84989b3328b6909adb, type: 2}
-  unitDistance: {x: 2, y: 1}
   goal: 2
   homeAnimation: {fileID: 0}
   maxSpeed: 6
@@ -852,7 +848,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 11400000, guid: 05e52d0ac9377c84989b3328b6909adb, type: 2}
-  unitDistance: {x: 2, y: 1}
   goal: 4
   homeAnimation: {fileID: 0}
   maxSpeed: 6

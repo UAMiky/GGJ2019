@@ -18,6 +18,7 @@ namespace miyaluas.droplet
         {
             game = gameController;
             playerOffset = transform.position.y - game.player.transform.position.y;
+            this.enabled = true;
         }
 
         private void LateUpdate()
