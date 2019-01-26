@@ -9,9 +9,6 @@ namespace miyaluas.droplet
         [Header("Grid configuration")]
         [SerializeField]
         IntersectionGrid grid;
-        [SerializeField]
-        [Tooltip("Distance between grid lines")]
-        Vector2 unitDistance = Vector2.one;
 
         [Header("Character configuration")]
         [SerializeField]
@@ -37,6 +34,8 @@ namespace miyaluas.droplet
         float targetSpeed = 1.0f;
         // Accumulates units travelled from last intersection
         Vector3 unitsTravelled;
+        // Accumulates total units travelled
+        Vector3 totalUnitsTravelled;
 
         Transform initialParent;
 
@@ -45,6 +44,7 @@ namespace miyaluas.droplet
             Vector3 travel = Vector3.zero;
             ArrivedIntersection(ref travel, 0f);
             unitsTravelled = Vector3.zero;
+            totalUnitsTravelled = Vector3.zero;
             transform.position = gameController.transform.position;
             this.enabled = true;
         }
@@ -70,8 +70,8 @@ namespace miyaluas.droplet
         void Move (Vector3 travel)
         {
             travel *= speedMultiplier;
-            travel.x *= unitDistance.x;
-            travel.y *= unitDistance.y;
+            travel.x *= grid.UnitDistance.x;
+            travel.y *= grid.UnitDistance.y;
             transform.Translate(travel);
         }
 
@@ -100,17 +100,20 @@ namespace miyaluas.droplet
                 // Move to the intersection
                 Vector3 move = targetUnitsTravelled - unitsTravelled;
                 Move(move);
+                // t = InverseLerp(move, Vector3.zero, travel);
                 float t = Vector3.Dot(move, travel) / Vector3.Dot(travel, travel);
                 delta *= (1 - t);
                 travel -= move;
 
                 // Apply speed change on the intersection
+                totalUnitsTravelled += move;
                 ArrivedIntersection(ref travel, delta);
                 unitsTravelled = Vector3.zero;
             }
 
             // Accumulate traveled distance from last intersection
             unitsTravelled += travel;
+            totalUnitsTravelled += travel;
         }
 
         void ArrivedIntersection(ref Vector3 travel, float delta)
@@ -118,12 +121,12 @@ namespace miyaluas.droplet
             // Change direction
             float f = GetInput();
             direction =
-                (f <= -0.3f) ? new Vector3(-1f, -1f) :
-                (f >= 0.3f) ? new Vector3(1f, -1f) :
+                (f <= -0.3f) && (totalUnitsTravelled.x > -grid.HorizontalLimit) ? new Vector3(-1f, -1f) :
+                (f >=  0.3f) && (totalUnitsTravelled.x < grid.HorizontalLimit) ? new Vector3(1f, -1f) :
                 Vector3.down;
 
             // Change targetSpeed
-            targetSpeed += grid.GetSpeedup(transform.localPosition / unitDistance);
+            targetSpeed += grid.GetSpeedup(totalUnitsTravelled);
             if (targetSpeed < 0.1f)
             {
                 speed = 0f;

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185dcbf3e3e29a046ad0f5a2541600ec, type: 3}
   m_Name: GridDefinition
   m_EditorClassIdentifier: 
+  unitDistance: {x: 2, y: 1}
+  horizontalLimit: 5
   defaultModel: {fileID: 11400000, guid: 1bcf79eadd9ae23478e7a3f7a56fbeb7, type: 2}
   intersections:
   - model: {fileID: 11400000, guid: 19fcb80a5559af94eadc7725f7f953e3, type: 2}

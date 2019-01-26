@@ -15,6 +15,14 @@ namespace miyaluas.droplet
         }
 
         [SerializeField]
+        [Tooltip("Distance between grid lines")]
+        Vector2 unitDistance = Vector2.one;
+
+        [SerializeField]
+        [Tooltip("Number of horizontal grid intersections in half screen")]
+        float horizontalLimit = 5;
+
+        [SerializeField]
         IntersectionModel defaultModel;
 
         [SerializeField]
@@ -22,6 +30,9 @@ namespace miyaluas.droplet
 
         Dictionary<Vector2, IntersectionModel> intersectionMap =
             new Dictionary<Vector2, IntersectionModel>();
+
+        public Vector2 UnitDistance => unitDistance;
+        public float HorizontalLimit => horizontalLimit;
 
         public void OnAfterDeserialize()
         {
@@ -34,6 +45,7 @@ namespace miyaluas.droplet
 
         public float GetSpeedup(Vector3 local_pos)
         {
+            // TODO: Investigate calculated / procedurally generated values
             Vector2 pos = local_pos;
             IntersectionModel model;
             if (intersectionMap.TryGetValue(pos, out model))
