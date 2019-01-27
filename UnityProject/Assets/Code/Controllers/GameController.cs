@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace miyaluas.droplet
 {
@@ -21,11 +22,14 @@ namespace miyaluas.droplet
 
         [Header("Animations")]
         [Tooltip("After loading app. Shows logos.")]
-        Animation logosAnimation;
+        [SerializeField]
+        PlayableDirector logosPlayable;
         [Tooltip("After tap on logos. Goes from logos to 'Home'")]
-        Animation introAnimation;
+        [SerializeField]
+        PlayableDirector introPlayable;
         [Tooltip("After tap on credits. Goes from credits to 'Home'")]
-        Animation creditsAnimation;
+        [SerializeField]
+        PlayableDirector creditsPlayable;
 
         [Header("Main game objects")]
         public CameraController cam;
@@ -42,7 +46,7 @@ namespace miyaluas.droplet
 
         SensorKind currentGoal_;
         GameState currentState_;
-        Animation currentAnimation_;
+        PlayableDirector currentPlayable_;
         BallController currentPlayer_;
 
         List<SensorKind> pendingGoals = new List<SensorKind>();
@@ -58,19 +62,19 @@ namespace miyaluas.droplet
             switch(currentState_)
             {
                 case GameState.Logos:
-                    if (AnimationFinished() && ClickDetect())
+                    if (PlayableFinished() && ClickDetect())
                         SetState(GameState.Intro);
                     break;
 
                 case GameState.LevelResult:
                 case GameState.Intro:
                 case GameState.Intro2:
-                    if (AnimationFinished())
+                    if (PlayableFinished())
                         SetState(GameState.Home);
                     break;
 
                 case GameState.Home:
-                    if (AnimationFinished())
+                    if (PlayableFinished())
                         SetState(GameState.Level);
                     break;
 
@@ -80,7 +84,7 @@ namespace miyaluas.droplet
                     break;
 
                 case GameState.Ending:
-                    if (AnimationFinished())
+                    if (PlayableFinished())
                         SetState(GameState.Credits);
                     break;
 
@@ -97,18 +101,18 @@ namespace miyaluas.droplet
             switch(newState)
             {
                 case GameState.Logos:
-                    Play(logosAnimation);
+                    Play(logosPlayable);
                     break;
 
                 case GameState.Intro:
-                    Play(introAnimation);
+                    Play(introPlayable);
                     FillGoals();
                     break;
 
                 case GameState.Home:
                     uiController.SetLevelProgress(4 - pendingGoals.Count);
                     CalcNextGoal();
-                    PlayNewGoalAnimation();
+                    PlayNewGoalPlayable();
                     break;
 
                 case GameState.Level:
@@ -116,7 +120,7 @@ namespace miyaluas.droplet
                     break;
 
                 case GameState.Intro2:
-                    Play(creditsAnimation);
+                    Play(creditsPlayable);
                     FillGoals();
                     break;
 
@@ -174,9 +178,9 @@ namespace miyaluas.droplet
             listener.transform.localPosition = Vector3.zero;
         }
 
-        private void PlayNewGoalAnimation()
+        private void PlayNewGoalPlayable()
         {
-            currentPlayer_.PlayHomeAnimation(this);
+            currentPlayable_ = currentPlayer_.PlayHomeAnimation(this);
         }
 
         private void LevelStart()
@@ -190,15 +194,15 @@ namespace miyaluas.droplet
             cam.SetGameController(this);
         }
 
-        private void Play(Animation anim)
+        private void Play(PlayableDirector anim)
         {
-            currentAnimation_ = anim;
+            currentPlayable_ = anim;
             if(anim) anim.Play();
         }
 
-        private bool AnimationFinished()
+        private bool PlayableFinished()
         {
-            if (currentAnimation_) return currentAnimation_.isPlaying;
+            if (currentPlayable_) return currentPlayable_.state != PlayState.Playing;
             return true;
         }
 

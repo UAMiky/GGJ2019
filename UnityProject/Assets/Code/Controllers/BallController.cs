@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace miyaluas.droplet
 {
@@ -14,7 +15,7 @@ namespace miyaluas.droplet
         [SerializeField]
         SensorKind goal;
         [SerializeField]
-        Animation homeAnimation;
+        PlayableDirector homeAnimation;
         [SerializeField]
         SoftTrail trail;
         [SerializeField]
@@ -27,7 +28,7 @@ namespace miyaluas.droplet
         [SerializeField]
         float speedMultiplier = 1f;
 
-        public Animation HomeAnimation => homeAnimation;
+        public PlayableDirector HomeAnimation => homeAnimation;
         public SensorKind Goal => goal;
 
         // Direction
@@ -173,10 +174,13 @@ namespace miyaluas.droplet
                 Input.GetAxisRaw("Horizontal");
         }
 
-        internal void PlayHomeAnimation(GameController gameController)
+        internal PlayableDirector PlayHomeAnimation(GameController gameController)
         {
             transform.SetParent(gameController.transform);
             transform.position = initialParent.position;
+
+            homeAnimation.Play();
+            return homeAnimation;
         }
     }
 }

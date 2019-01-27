@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace miyaluas.droplet
 {
@@ -14,11 +15,11 @@ namespace miyaluas.droplet
 
         [Header("Animations")]
         [SerializeField]
-        Animation hitAnimation;
+        PlayableDirector hitAnimation;
 
         GameController gameController;
 
-        public Animation HitAnimation => hitAnimation;
+        public PlayableDirector HitAnimation => hitAnimation;
 
         // Awake is called when the scene is loaded
         void Awake()
