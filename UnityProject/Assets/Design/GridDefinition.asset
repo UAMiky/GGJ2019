@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GridDefinition
   m_EditorClassIdentifier: 
   unitDistance: {x: 2, y: 1}
-  horizontalLeftLimit: -13
-  horizontalRightLimit: 14.5
+  horizontalLeftLimit: -18
+  horizontalRightLimit: 20
   defaultModel: {fileID: 11400000, guid: 1bcf79eadd9ae23478e7a3f7a56fbeb7, type: 2}
   intersections:
   - model: {fileID: 11400000, guid: 19fcb80a5559af94eadc7725f7f953e3, type: 2}
