@@ -102,6 +102,7 @@ namespace miyaluas.droplet
             switch(newState)
             {
                 case GameState.Logos:
+                    uiController.ShowLogos();
                     cam.SetState(0);
                     Play(logosPlayable);
                     break;
@@ -114,7 +115,7 @@ namespace miyaluas.droplet
 
                 case GameState.Home:
                     cam.SetState(2);
-                    uiController.SetLevelProgress(4 - pendingGoals.Count);
+                    uiController.GoToLevel();
                     CalcNextGoal();
                     PlayNewGoalPlayable();
                     break;
@@ -130,7 +131,14 @@ namespace miyaluas.droplet
                     break;
 
                 case GameState.LevelResult:
+                    uiController.SetLevelProgress(4 - pendingGoals.Count);
+                    uiController.ShowHome();
+                    cam.SetState(1);
+                    break;
+
                 case GameState.Ending:
+                    uiController.SetLevelProgress(5);
+                    uiController.ShowHome();
                     cam.SetState(1);
                     break;
 
@@ -173,6 +181,8 @@ namespace miyaluas.droplet
             else currentGoal_ = SensorKind.ObjetivoFinal;
 
             // Select player object
+            listener.transform.SetParent(transform);
+            listener.transform.localPosition = Vector3.zero;
             currentPlayer_?.Hide();
             currentPlayer_ = null;
             foreach (BallController c in playerObjects)
@@ -181,8 +191,6 @@ namespace miyaluas.droplet
 
             cam.GetComponent<AudioListener>().enabled = false;
             listener.enabled = true;
-            listener.transform.SetParent(currentPlayer_.transform);
-            listener.transform.localPosition = Vector3.zero;
         }
 
         private void PlayNewGoalPlayable()
@@ -192,9 +200,11 @@ namespace miyaluas.droplet
 
         private void LevelStart()
         {
-
             if (currentPlayer_)
             {
+                listener.transform.SetParent(currentPlayer_.transform);
+                listener.transform.localPosition = Vector3.zero;
+
                 currentPlayer_.SetGameController(this);
                 currentPlayer_.enabled = true;
             }
@@ -212,7 +222,7 @@ namespace miyaluas.droplet
         {
             animationTime += Time.deltaTime;
             if (currentPlayable_) return currentPlayable_.state != PlayState.Playing;
-            return animationTime >= 2f;
+            return uiController.AnimationFinished() && cam.AnimationFinished();
         }
 
         private bool ClickDetect()

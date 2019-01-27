@@ -20,6 +20,8 @@ namespace miyaluas.droplet
         SoftTrail trail;
         [SerializeField]
         AudioSource hintSoundSource;
+        [SerializeField]
+        AudioClip hintAudioClip;
 
         [Header("Speed configuration")]
         [SerializeField]
@@ -86,7 +88,7 @@ namespace miyaluas.droplet
 
         internal void HintSound()
         {
-            hintSoundSource.Play();
+            hintSoundSource.PlayOneShot(hintAudioClip);
         }
 
         void Move (Vector3 travel)

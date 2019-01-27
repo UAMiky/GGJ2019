@@ -11,6 +11,8 @@ public class UIController : MonoBehaviour
     Image levelProgress;
     [SerializeField]
     float[] fillAmounts;
+    public Animator animator;
+    public Image logos;
 
     float targetLevelProgress;
 
@@ -31,9 +33,24 @@ public class UIController : MonoBehaviour
         }
     }
 
+    internal bool AnimationFinished()
+    { return true; }
+
     internal void ShowLogos()
     {
+        animator.SetTrigger("Logos");
+    }
 
+    internal void ShowHome()
+    {
+        logos.enabled = false;
+        animator.SetTrigger("Home");
+    }
+
+    internal void GoToLevel()
+    {
+        logos.enabled = false;
+        animator.SetTrigger("Level");
     }
 
     internal void SetLevelProgress(int nItems)

@@ -50,5 +50,19 @@ namespace miyaluas.droplet
                     break;
             }
         }
+
+        internal bool AnimationFinished()
+        {
+            switch (state)
+            {
+                case 1:   // Going to home
+                    return (homePosition - transform.position).sqrMagnitude < 0.01f;
+
+                case 2:   // Going to level
+                    return (levelPosition - transform.position).sqrMagnitude < 0.01f;
+            }
+
+            return true;
+        }
     }
 }
