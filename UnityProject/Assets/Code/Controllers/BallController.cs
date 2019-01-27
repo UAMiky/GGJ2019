@@ -16,7 +16,7 @@ namespace miyaluas.droplet
         [SerializeField]
         Animation homeAnimation;
         [SerializeField]
-        Animator animator;
+        SoftTrail trail;
 
         [Header("Speed configuration")]
         [SerializeField]
@@ -50,6 +50,7 @@ namespace miyaluas.droplet
             totalUnitsTravelled = Vector3.zero;
             transform.position = gameController.transform.position;
             this.enabled = true;
+            trail?.InitTrail(transform);
         }
 
         private void Awake()
@@ -71,11 +72,11 @@ namespace miyaluas.droplet
             Move(travel);
 
             // TODO: Rotate towards travel
+        }
 
-            bool speedingUp = (speed >= 1f); // || (targetSpeed > speed);
-            float yVelocity = Mathf.Clamp01(Mathf.Abs(rb.velocity.y));
-            animator.SetBool("SpeedUp", speedingUp);
-            animator.SetFloat("Speed", speedingUp ? yVelocity : 1f - yVelocity);
+        private void LateUpdate()
+        {
+            trail?.UpdateTrail(transform, Time.deltaTime * speed);
         }
 
         void Move (Vector3 travel)
