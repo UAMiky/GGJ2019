@@ -89,6 +89,8 @@ namespace miyaluas.droplet
         internal void HintSound()
         {
             hintSoundSource.PlayOneShot(hintAudioClip);
+            gameObject.SetActive(true);
+            StartCoroutine(Co_VolumeDown());
         }
 
         void Move (Vector3 travel)
@@ -187,6 +189,16 @@ namespace miyaluas.droplet
 
             if(homeAnimation) homeAnimation.Play();
             return homeAnimation;
+        }
+
+        IEnumerator Co_VolumeDown()
+        {
+            hintSoundSource.volume = 1f;
+            while(hintSoundSource.volume > 0f)
+            {
+                yield return null;
+                hintSoundSource.volume -= Time.deltaTime;
+            }
         }
     }
 }
