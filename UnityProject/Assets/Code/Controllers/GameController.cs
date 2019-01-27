@@ -29,6 +29,7 @@ namespace miyaluas.droplet
 
         [Header("Main game objects")]
         public CameraController cam;
+        public UIController uiController;
         public AudioListener listener;
         public BallController[] playerObjects;
 
@@ -105,6 +106,7 @@ namespace miyaluas.droplet
                     break;
 
                 case GameState.Home:
+                    uiController.SetLevelProgress(4 - pendingGoals.Count);
                     CalcNextGoal();
                     PlayNewGoalAnimation();
                     break;

@@ -13,22 +13,19 @@ namespace miyaluas.droplet
         bool ignoreWhenDifferent;
 
         [Header("Animations")]
+        [SerializeField]
         Animation hitAnimation;
 
         GameController gameController;
 
         public Animation HitAnimation => hitAnimation;
 
-        // Automatically called when adding this component
-        void Reset()
-        {
-            // Reference player controller
-            gameController = FindObjectOfType<GameController>();
-        }
-
         // Awake is called when the scene is loaded
         void Awake()
         {
+            // Reference player controller
+            gameController = FindObjectOfType<GameController>();
+
             // Turn all colliders inside this object into triggers
             foreach (Collider c in GetComponentsInChildren<Collider>())
                 c.isTrigger = true;
