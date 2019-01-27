@@ -29,7 +29,12 @@ namespace miyaluas.droplet
 
         [Header("Main game objects")]
         public CameraController cam;
+        public AudioListener listener;
         public BallController[] playerObjects;
+
+        [Header("Other options")]
+        [SerializeField]
+        bool soundTapEnabled = true;
 
         public BallController player => currentPlayer_;
         public SensorKind goal => currentGoal_;
@@ -69,6 +74,8 @@ namespace miyaluas.droplet
                     break;
 
                 case GameState.Level:
+                    if (soundTapEnabled && ClickDetect())
+                        currentPlayer_?.HintSound();
                     break;
 
                 case GameState.Ending:
@@ -113,7 +120,11 @@ namespace miyaluas.droplet
 
                 case GameState.LevelResult:
                 case GameState.Ending:
+                    break;
+
                 case GameState.Credits:
+                    listener.enabled = false;
+                    cam.GetComponent<AudioListener>().enabled = true;
                     break;
             }
         }
@@ -154,6 +165,11 @@ namespace miyaluas.droplet
             foreach (BallController c in playerObjects)
                 if (c.Goal == currentGoal_)
                     currentPlayer_ = c;
+
+            cam.GetComponent<AudioListener>().enabled = false;
+            listener.enabled = true;
+            listener.transform.SetParent(currentPlayer_.transform);
+            listener.transform.localPosition = Vector3.zero;
         }
 
         private void PlayNewGoalAnimation()

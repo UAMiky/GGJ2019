@@ -17,6 +17,8 @@ namespace miyaluas.droplet
         Animation homeAnimation;
         [SerializeField]
         SoftTrail trail;
+        [SerializeField]
+        AudioSource hintSoundSource;
 
         [Header("Speed configuration")]
         [SerializeField]
@@ -77,6 +79,11 @@ namespace miyaluas.droplet
         private void LateUpdate()
         {
             trail?.UpdateTrail(transform, Time.deltaTime * speed);
+        }
+
+        internal void HintSound()
+        {
+            hintSoundSource.Play();
         }
 
         void Move (Vector3 travel)
