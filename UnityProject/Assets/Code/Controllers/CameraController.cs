@@ -17,6 +17,14 @@ namespace miyaluas.droplet
 
         float playerOffset;
         float dampVelocity = 0f;
+        Vector3 initialPos;
+        Vector3 targetPos;
+        float timeElapsed;
+
+        void GoToLevel()
+        {
+            SetState(2);
+        }
 
         internal void SetState(int newState)
         {
@@ -56,10 +64,10 @@ namespace miyaluas.droplet
             switch (state)
             {
                 case 1:   // Going to home
-                    return (homePosition - transform.position).sqrMagnitude < 0.01f;
+                    return (homePosition - transform.position).sqrMagnitude < 0.1f;
 
                 case 2:   // Going to level
-                    return (levelPosition - transform.position).sqrMagnitude < 0.01f;
+                    return (levelPosition - transform.position).sqrMagnitude < 0.1f;
             }
 
             return true;

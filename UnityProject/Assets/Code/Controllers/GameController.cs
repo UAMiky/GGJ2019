@@ -103,7 +103,6 @@ namespace miyaluas.droplet
             {
                 case GameState.Logos:
                     uiController.ShowLogos();
-                    cam.SetState(0);
                     Play(logosPlayable);
                     break;
 
@@ -233,8 +232,9 @@ namespace miyaluas.droplet
         internal void GoalReached(GenericSensor sensor)
         {
             // Ask sensor for animation and play it
+            currentPlayer_.enabled = false;
             Play(sensor.HitAnimation);
-            if(currentGoal_ == SensorKind.ObjetivoFinal)
+            if (currentGoal_ == SensorKind.ObjetivoFinal)
             {
                 SetState(GameState.Ending);
             }

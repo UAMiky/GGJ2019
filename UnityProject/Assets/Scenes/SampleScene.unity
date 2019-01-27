@@ -508,8 +508,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 7.903078
-  MaxDistance: 12.997711
+  MinDistance: 5.782152
+  MaxDistance: 17.239563
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -519,8 +519,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.70904344
-      value: 0.94999695
+      time: 0.42727464
+      value: 0.9988861
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -816,8 +816,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344736733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8, y: -145.1, z: 0}
-  m_LocalScale: {x: 64, y: 1, z: 10}
+  m_LocalPosition: {x: 2, y: -121, z: 0}
+  m_LocalScale: {x: 68, y: 1, z: 10}
   m_Children:
   - {fileID: 161239472}
   m_Father: {fileID: 379636589}
@@ -893,11 +893,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243040586852211998, guid: 36a037ea1b0377141b7ab127d020a0e4,
     type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 179c14450a173214b8ceeea895385dbd, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1015,9 +1015,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1666122947}
   - {fileID: 1211229185}
   - {fileID: 1628037975}
-  - {fileID: 1666122947}
   - {fileID: 875692152}
   - {fileID: 1933792428}
   - {fileID: 2078556377}
@@ -1076,7 +1076,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 15
-  field of view: 118
+  field of view: 115
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1102,7 +1102,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 37, z: -11}
+  m_LocalPosition: {x: 0, y: 26, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dampSpeed: 10
-  homePosition: {x: 0, y: 37, z: -11}
+  homePosition: {x: 0, y: 26, z: -11}
   levelPosition: {x: 0, y: -1.5, z: -11}
 --- !u!1 &659368431
 GameObject:
@@ -1175,8 +1175,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 1
-  MaxDistance: 19.711636
+  MinDistance: 5.782152
+  MaxDistance: 17.239563
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -1186,8 +1186,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.71927243
-      value: 0.9666672
+      time: 0.42727464
+      value: 0.9988861
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1195,10 +1195,10 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.94381714
       value: 0
-      inSlope: -1.0534427
-      outSlope: -1.0534427
+      inSlope: -2.2032516
+      outSlope: -2.2032516
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -1392,8 +1392,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 1
-  MaxDistance: 19.711636
+  MinDistance: 5.782152
+  MaxDistance: 17.239563
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -1403,8 +1403,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.74736005
-      value: 0.95833206
+      time: 0.42727464
+      value: 0.9988861
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1412,10 +1412,10 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.94381714
       value: 0
-      inSlope: -1.0534427
-      outSlope: -1.0534427
+      inSlope: -2.2032516
+      outSlope: -2.2032516
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -1520,8 +1520,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 7.2783203
-  MaxDistance: 17.823397
+  MinDistance: 5.782152
+  MaxDistance: 17.239563
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -1531,8 +1531,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.76790047
-      value: 1
+      time: 0.42727464
+      value: 0.9988861
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1540,10 +1540,10 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.94381714
       value: 0
-      inSlope: -1.6902103
-      outSlope: -1.6902103
+      inSlope: -2.2032516
+      outSlope: -2.2032516
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -1647,8 +1647,8 @@ MonoBehaviour:
   homeAnimation: {fileID: 0}
   trail: {fileID: 827293477}
   hintSoundSource: {fileID: 1850092291}
-  hintAudioClip: {fileID: 8300000, guid: 395c709c027d9e34488433b0a7004dfd, type: 3}
-  maxSpeed: 12
+  hintAudioClip: {fileID: 8300000, guid: 0c6660c85e9f03d4ba0b2146e60cd316, type: 3}
+  maxSpeed: 8
   speedMultiplier: 1
 --- !u!135 &807883541
 SphereCollider:
@@ -1852,8 +1852,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 12.460157
-  MaxDistance: 19.656113
+  MinDistance: 5.782152
+  MaxDistance: 17.239563
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -1863,8 +1863,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.79893297
-      value: 0.9749985
+      time: 0.42727464
+      value: 0.9988861
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1872,7 +1872,7 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.94381714
       value: 0
       inSlope: -2.2032516
       outSlope: -2.2032516
@@ -1964,8 +1964,8 @@ MonoBehaviour:
   homeAnimation: {fileID: 0}
   trail: {fileID: 827293477}
   hintSoundSource: {fileID: 1850092291}
-  hintAudioClip: {fileID: 8300000, guid: 4576a59bf72b2274c85325f5f3f4ef6f, type: 3}
-  maxSpeed: 12
+  hintAudioClip: {fileID: 0}
+  maxSpeed: 8
   speedMultiplier: 1
 --- !u!135 &868030449
 SphereCollider:
@@ -2023,7 +2023,7 @@ GameObject:
   - component: {fileID: 875692154}
   - component: {fileID: 875692153}
   m_Layer: 0
-  m_Name: Canalon
+  m_Name: 4 Canalon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2037,8 +2037,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875692151}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.8, y: -129.6, z: 0}
-  m_LocalScale: {x: 16, y: 26, z: 10}
+  m_LocalPosition: {x: 29.9, y: -106.3, z: 0}
+  m_LocalScale: {x: 13.8, y: 17.9, z: 10}
   m_Children:
   - {fileID: 714138333}
   - {fileID: 659368432}
@@ -2109,8 +2109,8 @@ MonoBehaviour:
   homeAnimation: {fileID: 0}
   trail: {fileID: 827293477}
   hintSoundSource: {fileID: 1850092291}
-  hintAudioClip: {fileID: 8300000, guid: 7508173d03424db429c9b1843841ab10, type: 3}
-  maxSpeed: 12
+  hintAudioClip: {fileID: 8300000, guid: 1510f6db5ea1d2540a60de93744ada1d, type: 3}
+  maxSpeed: 8
   speedMultiplier: 1
 --- !u!135 &920242580
 SphereCollider:
@@ -2348,8 +2348,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964088466}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: -35, z: 0}
-  m_LocalScale: {x: 64, y: 216, z: 1}
+  m_LocalPosition: {x: 2, y: -35, z: 0}
+  m_LocalScale: {x: 64, y: 180, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -2469,8 +2469,8 @@ MonoBehaviour:
   homeAnimation: {fileID: 0}
   trail: {fileID: 827293477}
   hintSoundSource: {fileID: 1850092291}
-  hintAudioClip: {fileID: 8300000, guid: dc160fdf1877eb546bd76447d7a2b1b2, type: 3}
-  maxSpeed: 12
+  hintAudioClip: {fileID: 8300000, guid: d85efa0f1839d67469637c55e58d5fa5, type: 3}
+  maxSpeed: 8
   speedMultiplier: 1
 --- !u!135 &1101922578
 SphereCollider:
@@ -2774,7 +2774,7 @@ GameObject:
   - component: {fileID: 1211229187}
   - component: {fileID: 1211229186}
   m_Layer: 0
-  m_Name: Insectos
+  m_Name: 2 Insectos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2788,12 +2788,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211229184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.7, y: -74.4, z: 0}
-  m_LocalScale: {x: 16, y: 26, z: 10}
+  m_LocalPosition: {x: 24.3, y: -40, z: 0}
+  m_LocalScale: {x: 12, y: 22, z: 10}
   m_Children:
   - {fileID: 1934538349}
   m_Father: {fileID: 379636589}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1211229186
 MonoBehaviour:
@@ -3044,8 +3044,8 @@ MonoBehaviour:
   homeAnimation: {fileID: 0}
   trail: {fileID: 827293477}
   hintSoundSource: {fileID: 1850092291}
-  hintAudioClip: {fileID: 8300000, guid: 158185304beecd44eabc707468c7a6e9, type: 3}
-  maxSpeed: 12
+  hintAudioClip: {fileID: 8300000, guid: 73ded2c2a331f2445b49333d326968bd, type: 3}
+  maxSpeed: 8
   speedMultiplier: 1
 --- !u!135 &1473126112
 SphereCollider:
@@ -3103,7 +3103,7 @@ GameObject:
   - component: {fileID: 1628037977}
   - component: {fileID: 1628037976}
   m_Layer: 0
-  m_Name: Casa
+  m_Name: 3 Casa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3117,12 +3117,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628037974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21, y: -79.3, z: 0}
-  m_LocalScale: {x: 20, y: 32, z: 10}
+  m_LocalPosition: {x: -15.4, y: -62.8, z: 0}
+  m_LocalScale: {x: 12, y: 24, z: 10}
   m_Children:
   - {fileID: 834216764}
   m_Father: {fileID: 379636589}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1628037976
 MonoBehaviour:
@@ -3164,7 +3164,7 @@ GameObject:
   - component: {fileID: 1666122949}
   - component: {fileID: 1666122948}
   m_Layer: 0
-  m_Name: Pajaro
+  m_Name: 1 Pajaro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3178,12 +3178,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666122946}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.5, y: -31.9, z: 0}
+  m_LocalPosition: {x: -19.5, y: -29.3, z: 0}
   m_LocalScale: {x: 16, y: 26, z: 10}
   m_Children:
   - {fileID: 201078406}
   m_Father: {fileID: 379636589}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1666122948
 MonoBehaviour:
@@ -3258,21 +3258,22 @@ AudioSource:
   m_GameObject: {fileID: 1850092289}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243040586852211998, guid: 36a037ea1b0377141b7ab127d020a0e4,
+    type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  DopplerLevel: 0
+  MinDistance: 5.782152
+  MaxDistance: 12
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -3280,23 +3281,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
+      time: 0.42727464
+      value: 0.9988861
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.94381714
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.2032516
+      outSlope: -2.2032516
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -3305,7 +3306,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.9916649
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3320,7 +3321,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.43333334
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3335,7 +3336,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.0333328
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3499,7 +3500,7 @@ GameObject:
   - component: {fileID: 1933792430}
   - component: {fileID: 1933792429}
   m_Layer: 0
-  m_Name: Electrico
+  m_Name: 5 Electrico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3513,7 +3514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933792427}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.9, y: -134.9, z: 0}
+  m_LocalPosition: {x: 1.5, y: -115.2, z: 0}
   m_LocalScale: {x: 16, y: 26, z: 10}
   m_Children:
   - {fileID: 759312435}
@@ -3600,8 +3601,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 1
-  MaxDistance: 13.78099
+  MinDistance: 5.782152
+  MaxDistance: 17.239563
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -3611,8 +3612,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.74059725
-      value: 0.9749985
+      time: 0.42727464
+      value: 0.9988861
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3620,10 +3621,10 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.94381714
       value: 0
-      inSlope: -1.0647609
-      outSlope: -1.0647609
+      inSlope: -2.2032516
+      outSlope: -2.2032516
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -3978,8 +3979,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078556376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -147.1, z: 0}
-  m_LocalScale: {x: 64, y: 1, z: 10}
+  m_LocalPosition: {x: 2, y: -120, z: 0}
+  m_LocalScale: {x: 68, y: 1, z: 10}
   m_Children:
   - {fileID: 349158979}
   m_Father: {fileID: 379636589}
