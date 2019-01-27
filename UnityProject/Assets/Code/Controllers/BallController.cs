@@ -89,8 +89,8 @@ namespace miyaluas.droplet
         internal void HintSound()
         {
             hintSoundSource.PlayOneShot(hintAudioClip);
-            gameObject.SetActive(true);
-            StartCoroutine(Co_VolumeDown());
+            //gameObject.SetActive(true);
+            //StartCoroutine(Co_VolumeDown());
         }
 
         void Move (Vector3 travel)
