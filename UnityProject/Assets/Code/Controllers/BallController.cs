@@ -181,6 +181,7 @@ namespace miyaluas.droplet
 
         internal PlayableDirector PlayHomeAnimation(GameController gameController)
         {
+            HintSound();
             transform.SetParent(gameController.transform);
             transform.position = initialParent.position;
 

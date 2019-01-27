@@ -8,14 +8,13 @@ namespace miyaluas.droplet
     public class TrailingObject : MonoBehaviour
     {
         Animation anim;
-        Renderer rend;
+        SpriteRenderer rend;
         AnimationState state;
-
 
         internal void Init(Transform parent)
         {
             anim = GetComponent<Animation>();
-            rend = GetComponentInChildren<Renderer>();
+            rend = GetComponentInChildren<SpriteRenderer>();
             rend.enabled = false;
             transform.position = parent.position;
             state = anim["Trail"];
@@ -25,6 +24,7 @@ namespace miyaluas.droplet
         {
             transform.position = parent.position;
             rend.enabled = true;
+            rend.color = parent.GetComponentInChildren<SpriteRenderer>().color;
             anim.Play();
         }
 
