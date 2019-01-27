@@ -31,6 +31,11 @@ public class UIController : MonoBehaviour
         }
     }
 
+    internal void ShowLogos()
+    {
+
+    }
+
     internal void SetLevelProgress(int nItems)
     {
         targetLevelProgress = 1f;

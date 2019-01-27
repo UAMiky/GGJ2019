@@ -53,6 +53,7 @@ namespace miyaluas.droplet
             totalUnitsTravelled = Vector3.zero;
             transform.position = gameController.transform.position;
             this.enabled = true;
+            this.gameObject.SetActive(true);
             trail?.InitTrail(transform);
         }
 
@@ -60,6 +61,7 @@ namespace miyaluas.droplet
         {
             initialParent = transform.parent;
             rb = GetComponent<Rigidbody>();
+            this.gameObject.SetActive(false);
         }
 
         void Update()
@@ -165,6 +167,7 @@ namespace miyaluas.droplet
         {
             transform.SetParent(initialParent);
             this.enabled = false;
+            this.gameObject.SetActive(false);
         }
 
         float GetInput()
@@ -179,7 +182,7 @@ namespace miyaluas.droplet
             transform.SetParent(gameController.transform);
             transform.position = initialParent.position;
 
-            homeAnimation.Play();
+            if(homeAnimation) homeAnimation.Play();
             return homeAnimation;
         }
     }

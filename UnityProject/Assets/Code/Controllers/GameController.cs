@@ -51,6 +51,7 @@ namespace miyaluas.droplet
 
         List<SensorKind> pendingGoals = new List<SensorKind>();
         int pendingIndex;
+        float animationTime;
 
         private void Awake()
         {
@@ -101,15 +102,18 @@ namespace miyaluas.droplet
             switch(newState)
             {
                 case GameState.Logos:
+                    cam.SetState(0);
                     Play(logosPlayable);
                     break;
 
                 case GameState.Intro:
+                    cam.SetState(1);
                     Play(introPlayable);
                     FillGoals();
                     break;
 
                 case GameState.Home:
+                    cam.SetState(2);
                     uiController.SetLevelProgress(4 - pendingGoals.Count);
                     CalcNextGoal();
                     PlayNewGoalPlayable();
@@ -120,15 +124,18 @@ namespace miyaluas.droplet
                     break;
 
                 case GameState.Intro2:
+                    cam.SetState(1);
                     Play(creditsPlayable);
                     FillGoals();
                     break;
 
                 case GameState.LevelResult:
                 case GameState.Ending:
+                    cam.SetState(1);
                     break;
 
                 case GameState.Credits:
+                    cam.SetState(0);
                     listener.enabled = false;
                     cam.GetComponent<AudioListener>().enabled = true;
                     break;
@@ -180,7 +187,7 @@ namespace miyaluas.droplet
 
         private void PlayNewGoalPlayable()
         {
-            currentPlayable_ = currentPlayer_.PlayHomeAnimation(this);
+            Play(currentPlayer_.PlayHomeAnimation(this));
         }
 
         private void LevelStart()
@@ -198,12 +205,14 @@ namespace miyaluas.droplet
         {
             currentPlayable_ = anim;
             if(anim) anim.Play();
+            animationTime = 0f;
         }
 
         private bool PlayableFinished()
         {
+            animationTime += Time.deltaTime;
             if (currentPlayable_) return currentPlayable_.state != PlayState.Playing;
-            return true;
+            return animationTime >= 2f;
         }
 
         private bool ClickDetect()
